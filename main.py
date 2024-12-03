@@ -42,6 +42,7 @@ class Game:
                     self.running = False
 
             # update
+            self.all_sprites.update(delta)
             self.all_sprites.draw(self.display_surface)
             pygame.display.update()
             self.clock.tick(60)
