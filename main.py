@@ -4,6 +4,7 @@ from settings import *
 from pytmx.util_pygame import load_pygame
 from sprites import *
 from player import Player
+from groups import AllSprites
 
 
 class Game:
@@ -14,7 +15,7 @@ class Game:
         self.clock = pygame.time.Clock()
         self.running = True
         # groups
-        self.all_sprites = pygame.sprite.Group()
+        self.all_sprites = AllSprites()
         self.collision_sprites = pygame.sprite.Group()
         self.setup_map()
 
@@ -43,9 +44,9 @@ class Game:
 
             # update
             self.all_sprites.update(delta)
-            self.all_sprites.draw(self.display_surface)
+            self.display_surface.fill('black')
+            self.all_sprites.draw(self.player.rect.center)
             pygame.display.update()
-            self.clock.tick(60)
         pygame.quit()
         sys.exit()
 
