@@ -28,7 +28,9 @@ class Game:
             Sprite((item.x, item.y), item.image, self.all_sprites)
         for item in map.get_layer_by_name('objects'):
             if item.image is not None:
-                Sprite((item.x, item.y), item.image, (self.all_sprites, self.collision_sprites))
+                CollisionSprite((item.x, item.y), item.image, (self.all_sprites, self.collision_sprites))
+        for item in map.get_layer_by_name('collisions'):
+            CollisionSprite((item.x, item.y), pygame.Surface((item.width, item.height)), self.collision_sprites)
         for item in map.get_layer_by_name('entities'):
             if item.name == 'Player':
                 self.player = Player((item.x, item.y), self.all_sprites, self.collision_sprites)
