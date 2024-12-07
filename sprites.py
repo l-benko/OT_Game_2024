@@ -72,6 +72,10 @@ class FireBall(pygame.sprite.Sprite):
         self.rect = self.image.get_frect(center = position)
         self.direction = direction
         self.speed = 1000
+        self.lifetime = 1000
+        self.spawn_time = pygame.time.get_ticks()
 
     def update(self, delta):
         self.rect.center += self.direction * self.speed * delta
+        if pygame.time.get_ticks() - self.spawn_time >= self.lifetime:
+            self.kill()
