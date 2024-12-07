@@ -29,6 +29,14 @@ class Game:
         pygame.time.set_timer(self.enemy_event, 500)
         self.enemy_spawn_positions = []
 
+        # audio
+        self.shoot_sound = pygame.mixer.Sound(join('assets', 'audio', 'shoot.wav'))
+        self.shoot_sound.set_volume(0.4)
+        self.impact_sound = pygame.mixer.Sound(join('assets', 'audio', 'impact.ogg'))
+        self.music = pygame.mixer.Sound(join('assets', 'audio', 'music.wav'))
+        self.music.set_volume(0.3)
+        self.music.play(loops=-1)
+
         self.setup_map()
         self.fireball_surface = pygame.image.load(join('assets', 'fireball', 'ball.png')).convert_alpha()
         self.load_enemies()
@@ -64,6 +72,7 @@ class Game:
 
     def input(self):
         if pygame.mouse.get_pressed()[0] and self.can_shoot:
+            self.shoot_sound.play()
             mouse_pos = pygame.Vector2(pygame.mouse.get_pos())
             player_pos = pygame.Vector2(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2)  # because the player is always in window center
             player_direction = (mouse_pos - player_pos).normalize()
@@ -82,6 +91,7 @@ class Game:
             for fireball in self.fireball_sprites:
                 collided_sprites = pygame.sprite.spritecollide(fireball, self.enemy_sprites, False, pygame.sprite.collide_mask)
                 if collided_sprites:
+                    self.impact_sound.play()
                     for sprite in collided_sprites:
                         sprite.destroy()
                     fireball.kill()
