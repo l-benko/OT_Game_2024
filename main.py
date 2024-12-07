@@ -86,6 +86,10 @@ class Game:
                         sprite.destroy()
                     fireball.kill()
 
+    def player_collision(self):
+        if pygame.sprite.spritecollide(self.player, self.enemy_sprites, False, pygame.sprite.collide_mask):
+            self.running = False
+
     def run(self):
         while self.running:
             delta = self.clock.tick() / 1000
@@ -104,6 +108,7 @@ class Game:
             self.input()
             self.all_sprites.update(delta)
             self.fireball_collision()
+            self.player_collision()
             self.display_surface.fill('black')
             self.all_sprites.draw(self.player.rect.center)
             pygame.display.update()
