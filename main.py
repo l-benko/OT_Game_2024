@@ -19,12 +19,14 @@ class Game:
         self.all_sprites = AllSprites()
         self.collision_sprites = pygame.sprite.Group()
         self.enemy_sprites = pygame.sprite.Group()
+        self.fireball_sprites = pygame.sprite.Group()
         # enemy spawn timer and positions
         self.enemy_event = pygame.event.custom_type()
         pygame.time.set_timer(self.enemy_event, 500)
         self.enemy_spawn_positions = []
 
         self.setup_map()
+        self.fireball_surface = pygame.image.load(join('assets', 'fireball', 'ball.png')).convert_alpha()
         self.load_enemies()
 
 
@@ -56,6 +58,13 @@ class Game:
                     surface = pygame.image.load(full_path).convert_alpha()
                     self.enemy_frames[folder].append(surface)
 
+    def input(self):
+        if pygame.mouse.get_pressed()[0]:
+            mouse_pos = pygame.Vector2(pygame.mouse.get_pos())
+            player_pos = pygame.Vector2(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2)  # because the player is always in window center
+            player_direction = (mouse_pos - player_pos).normalize()
+            FireBall(self.fireball_surface, self.player.rect.center, player_direction, (self.all_sprites, self.fireball_sprites))
+
     def run(self):
         while self.running:
             delta = self.clock.tick() / 1000
@@ -70,6 +79,7 @@ class Game:
                     Enemy(position, enemy, (self.all_sprites, self.enemy_sprites), self.player, self.collision_sprites)
 
             # update
+            self.input()
             self.all_sprites.update(delta)
             self.display_surface.fill('black')
             self.all_sprites.draw(self.player.rect.center)
