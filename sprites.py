@@ -40,9 +40,9 @@ class Enemy(pygame.sprite.Sprite):
         player_position = pygame.Vector2(self.player.rect.center)
         enemy_position = pygame.Vector2(self.rect.center)
         self.direction = (player_position - enemy_position).normalize()
-        self.hitbox_rect.x = self.direction.x * self.speed * delta
+        self.hitbox_rect.x += self.direction.x * self.speed * delta
         self.collision('horizontal')
-        self.hitbox_rect.y = self.direction.y * self.speed * delta
+        self.hitbox_rect.y += self.direction.y * self.speed * delta
         self.collision('vertical')
         self.rect.center = self.hitbox_rect.center
 
