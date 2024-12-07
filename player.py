@@ -9,7 +9,9 @@ class Player(pygame.sprite.Sprite):
         self.load_images()
         self.state, self.frame_index = 'down', 0
         self.image = pygame.image.load(join('assets','player',self.state,'0.png')).convert_alpha()
+        self.image = pygame.transform.scale(self.image, (128, 128))
         self.rect = self.image.get_frect(center=position)
+        self.hitbox_rect = self.rect.inflate(-120, -120)  # solves the gap between image and obstacle
         # move player
         self.direction = pygame.Vector2()
         self.speed = 500
@@ -35,24 +37,25 @@ class Player(pygame.sprite.Sprite):
 
     def move(self, delta):
         #self.rect.center += self.direction * self.speed * delta
-        self.rect.x += self.direction.x * self.speed * delta
+        self.hitbox_rect.x += self.direction.x * self.speed * delta
         self.collision("horizontal")
-        self.rect.y += self.direction.y * self.speed * delta
+        self.hitbox_rect.y += self.direction.y * self.speed * delta
         self.collision("vertical")
+        self.rect.center = self.hitbox_rect.center
 
     def collision(self, direction):
         for sprite in self.collision_sprites:
-            if sprite.rect.colliderect(self.rect):
+            if sprite.rect.colliderect(self.hitbox_rect):
                 if direction == 'horizontal':
                     if self.direction.x > 0: # right
-                        self.rect.right = sprite.rect.left
+                        self.hitbox_rect.right = sprite.rect.left
                     if self.direction.x < 0: # left
-                        self.rect.left = sprite.rect.right
+                        self.hitbox_rect.left = sprite.rect.right
                 if direction == 'vertical':
                     if self.direction.y > 0: # up
-                        self.rect.bottom = sprite.rect.top
+                        self.hitbox_rect.bottom = sprite.rect.top
                     if self.direction.y < 0: # down
-                        self.rect.top = sprite.rect.bottom
+                        self.hitbox_rect.top = sprite.rect.bottom
 
     def input(self):
         keys = pygame.key.get_pressed()
