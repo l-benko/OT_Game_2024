@@ -39,11 +39,26 @@ class Enemy(pygame.sprite.Sprite):
     def move(self, delta):
         player_position = pygame.Vector2(self.player.rect.center)
         enemy_position = pygame.Vector2(self.rect.center)
-        print(self.direction)
         self.direction = (player_position - enemy_position).normalize()
         self.hitbox_rect.x = self.direction.x * self.speed * delta
+        self.collision('horizontal')
         self.hitbox_rect.y = self.direction.y * self.speed * delta
+        self.collision('vertical')
         self.rect.center = self.hitbox_rect.center
+
+    def collision(self, direction):
+        for sprite in self.collision_sprites:
+            if sprite.rect.colliderect(self.hitbox_rect):
+                if direction == "horizontal":
+                    if self.direction.x > 0: # moves right
+                        self.hitbox_rect.right = sprite.rect.left
+                    if self.direction.x < 0: # moves left
+                        self.hitbox_rect.left = sprite.rect.right
+                if direction == "vertical":
+                    if self.direction.y > 0: # moves up
+                        self.hitbox_rect.bottom = sprite.rect.top
+                    if self.direction.y < 0: # moves down
+                        self.hitbox_rect.top = sprite.rect.bottom
 
     def update(self, delta):
         self.move(delta)
