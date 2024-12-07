@@ -31,6 +31,8 @@ class Enemy(pygame.sprite.Sprite):
         self.collision_sprites = collision_sprites
         self.direction = pygame.Vector2()
         self.speed = 150
+        self.death_time = 0
+        self.death_duration = 400
 
     def animate(self, delta):
         self.frame_index += self.animation_speed * delta
@@ -61,8 +63,21 @@ class Enemy(pygame.sprite.Sprite):
                         self.hitbox_rect.top = sprite.rect.bottom
 
     def update(self, delta):
-        self.move(delta)
-        self.animate(delta)
+        if self.death_time == 0:
+            self.move(delta)
+            self.animate(delta)
+        else:
+            self.death_timer()
+
+    def death_timer(self):
+        if pygame.time.get_ticks() - self.death_time >= self.death_duration:
+            self.kill()
+
+    def destroy(self):
+        self.death_time = pygame.time.get_ticks()
+        surface = pygame.mask.from_surface(self.frames[0]).to_surface()  # black and white silhouette
+        surface.set_colorkey('black')
+        self.image = surface
 
 
 class FireBall(pygame.sprite.Sprite):
