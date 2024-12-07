@@ -63,3 +63,15 @@ class Enemy(pygame.sprite.Sprite):
     def update(self, delta):
         self.move(delta)
         self.animate(delta)
+
+
+class FireBall(pygame.sprite.Sprite):
+    def __init__(self, surface, position, direction, groups):
+        super().__init__(groups)
+        self.image = surface
+        self.rect = self.image.get_frect(center = position)
+        self.direction = direction
+        self.speed = 1000
+
+    def update(self, delta):
+        self.rect.center += self.direction * self.speed * delta
