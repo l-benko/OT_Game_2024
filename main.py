@@ -77,6 +77,15 @@ class Game:
             if current_time - self.shoot_time >= self.shoot_cooldown:
                 self.can_shoot = True
 
+    def fireball_collision(self):
+        if self.fireball_sprites:
+            for fireball in self.fireball_sprites:
+                collided_sprites = pygame.sprite.spritecollide(fireball, self.enemy_sprites, False, pygame.sprite.collide_mask)
+                if collided_sprites:
+                    for sprite in collided_sprites:
+                        sprite.destroy()
+                    fireball.kill()
+
     def run(self):
         while self.running:
             delta = self.clock.tick() / 1000
@@ -94,6 +103,7 @@ class Game:
             self.shoot_timer()
             self.input()
             self.all_sprites.update(delta)
+            self.fireball_collision()
             self.display_surface.fill('black')
             self.all_sprites.draw(self.player.rect.center)
             pygame.display.update()
