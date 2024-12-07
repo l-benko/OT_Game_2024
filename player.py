@@ -31,6 +31,7 @@ class Player(pygame.sprite.Sprite):
             self.state = 'down' if self.direction.y >0 else 'up'
         self.frame_index = (self.frame_index +5 * delta) if self.direction else 0
         self.image = self.frames[self.state][int(self.frame_index) % len(self.frames[self.state])]
+        self.image = pygame.transform.scale(self.image, (128, 128))
 
     def move(self, delta):
         #self.rect.center += self.direction * self.speed * delta
