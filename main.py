@@ -6,6 +6,7 @@ from sprites import *
 from player import Player
 from groups import AllSprites
 from random import choice
+from button import Button
 
 
 class Game:
@@ -100,6 +101,23 @@ class Game:
         if pygame.sprite.spritecollide(self.player, self.enemy_sprites, False, pygame.sprite.collide_mask):
             self.running = False
 
+    def start_screen(self):
+        start = True
+        start_button = Button(WINDOW_WIDTH//2-50, WINDOW_HEIGHT//2-20, 100, 50, pygame.Color('black'), pygame.Color('white'), 'Start', 32)
+        while start:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    start = False
+                    self.running = False
+            mouse_position = pygame.mouse.get_pos()
+            mouse_pressed = pygame.mouse.get_pressed()
+            if start_button.is_pressed(mouse_position, mouse_pressed):
+                start = False
+                self.run()
+            self.display_surface.blit(start_button.image, start_button.rect)
+            self.clock.tick(60)
+            pygame.display.update()
+
     def run(self):
         while self.running:
             delta = self.clock.tick() / 1000
@@ -128,4 +146,4 @@ class Game:
 
 if __name__ == '__main__':
     game = Game()
-    game.run()
+    game.start_screen()
