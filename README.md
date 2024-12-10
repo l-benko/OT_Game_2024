@@ -8,7 +8,7 @@ Na danom repozitáre sa nachádza implementácia prototypu hry v Pygame, ktorá 
 
 ---
 ## **1. Úvod**
-Navrhnutá hra slúži ako ukážka pre predmet Objektové technológie, s cieľom vytvorenia funkčného prototypu hry ako projektu ku skúške. Vytvorená hra spĺňa požiadavky zadanej témy (vložte tému alebo kľúčové slová). Hra má charakter hráč proti celému svetu, kde na hráča útočia príšery a jeho cieľom je prepracovať sa k cieľu.
+Navrhnutá hra slúži ako ukážka pre predmet Objektové technológie, s cieľom vytvorenia funkčného prototypu hry ako projektu ku skúške. Vytvorená hra spĺňa požiadavky zadanej témy (Swarms - príklad témy). Hra má charakter hráč proti celému svetu, kde na hráča útočia príšery a jeho cieľom je prepracovať sa k cieľu.
 
 ### **1.1 Inšpirácia**
 <ins>**Archero**</ins>
