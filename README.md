@@ -13,7 +13,7 @@ Navrhnutá hra slúži ako ukážka pre predmet Objektové technológie, s cieľ
 ### **1.1 Inšpirácia**
 <ins>**Archero**</ins>
 
-Archero je hra zameraná na osamelého lukostrelca, ktorý prechádza rôznymi úrovňami, pričom bojuje s rôznymi nepriateľmi. Koncept hry je založený na ***jeden proti celému svetu***, doplnený o rôzne herné mechaniky, ktoré časom vylepšujú hlavného hrdinu v boji si väčším množstvom silnejších nepriateľov. Hráč si v hre dokáže vylepšovať svoje skilly a zbroj.
+Archero je hra zameraná na osamelého lukostrelca, ktorý prechádza rôznymi úrovňami, pričom bojuje s rôznymi nepriateľmi. Koncept hry je založený na ***jeden proti celému svetu***, doplnený o rôzne herné mechaniky, ktoré časom vylepšujú hlavného hrdinu v boji s väčším množstvom silnejších nepriateľov. Hráč si v hre dokáže vylepšovať svoje skilly a zbroj.
 
 <p align="center">
   <img src="https://github.com/l-benko/OT_Game_2024/blob/main/archero.jpg" alt="Archero">
@@ -44,7 +44,7 @@ Cieľom hry je, aby hráč prežil ***určitý časový interval v hre***, prič
 ## **2. Koncept**
 
 ### **2.1 Prehľad hry**
-Hráč ovláda svoju postavu a snaží sa prežiť v hre stanovený ***časový interval*** (napr. 90 sekúnd). Počas tohto času ***na neho útočia*** nepriatelia, ktorí sa v pravidelných intervaloch spawnujú na mape. Hráč má možnosť násjť a využiť na mape objekty, ktoré mu pomôžu získať bezpečie a nebyť vystavený útokom zo všetkých strán.
+Hráč ovláda svoju postavu a snaží sa prežiť v hre stanovený ***časový interval*** (napr. 90 sekúnd). Počas tohto času ***na neho útočia*** nepriatelia, ktorí sa v pravidelných intervaloch spawnujú na mape. Hráč má možnosť nájsť a využiť na mape objekty, ktoré mu pomôžu získať bezpečie a nebyť vystavený útokom zo všetkých strán.
 
 ### **2.2 Interpretácia témy (Swarms - príklad témy)**
 **"Swarms"** - hráč je prenasledovaný veľkým množstvom nepriateľov, ktorých môže zabíjať, avšak sú opätovne generovaný do sveta. Nepriatelia majú nastavený pohyb vždy smerom k hráčovi a tak sa ho snažia premôcť obrovským množstvom. Vo vyšších leveloch je možné zvýšiť intenzitu generovania nepriateľov a zvyšovanie ich odolnosti voči hráčovým útokom.
@@ -53,6 +53,7 @@ Hráč ovláda svoju postavu a snaží sa prežiť v hre stanovený ***časový 
 - **Prekážky**: na mape sa nachádzajú objekty, ktoré tvoria aktívnu prekážku ako pre hráča, ak aj pre nepriateľov.
 - **Bonusové predmety**: hráč môže na mape zbierať predmety, ktoré mu pridajú napr. život, silu útokom alebo znížia čas do konca kola.
 - **Pevne stanovené miesta generovania nepriateľov**: nepriatelia sa negenerujú hocikde na mape, ale majú na to pevne stanovené miesta, aby nenastala situácia, že sa nepriateľ spawne doslova na hráčovi, čím sa zníži hrateľnost.
+- **Hráč môže likvidovať nepriateľov**: hráč vystreľuje ohnivú gulu, ktorá pri náraze do nepriateľa spôsobuje jeho zranenie.
 
 ### **2.4 Návrh tried**
 - **Game**: trieda, v ktorej sa bude nachádzať hlavná herná logika (úvodná obrazovka, herná slučka, vyhodnotenie hry, ...).
@@ -98,7 +99,7 @@ Používateľské rozhranie bude orientované do ostatného grafického štýlu 
 ### **5.2 Ovládanie**
 <ins>**Klávesnica**</ins>
 - **WASD**: pohyb hráča po mape.
-- **klávesy šípok**: alternatívne ovládanie pohybu hráča po mape.
+- **Klávesy šípok**: alternatívne ovládanie pohybu hráča po mape.
 
 <ins>**Myš**</ins> 
-- **ľavé tlačidlo**: výstrel ohnivej gule.
+- **Ľavé tlačidlo**: výstrel ohnivej gule.
