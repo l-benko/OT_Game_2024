@@ -13,7 +13,7 @@ Navrhnutá hra slúži ako ukážka pre predmet Objektové technológie, s cieľ
 ### **1.1 Inšpirácia**
 <ins>**Archero**</ins>
 
-Archero je hra zameraná na osamelého lukostrelca, ktorý prechádza rôznymi úrovňami, pričom bojuje s hordou nepriateľov. Koncept hry je založený na ***jeden proti celému svetu***, doplnený o rôzne herné mechaniky, ktoré časom vylepšujú hlavného hrdinu v boji si väčším množstvom silnejších nepriateľov. Hráč si v hre dokáže vylepšovať svoje skilly a zbroj.
+Archero je hra zameraná na osamelého lukostrelca, ktorý prechádza rôznymi úrovňami, pričom bojuje s rôznymi nepriateľmi. Koncept hry je založený na ***jeden proti celému svetu***, doplnený o rôzne herné mechaniky, ktoré časom vylepšujú hlavného hrdinu v boji si väčším množstvom silnejších nepriateľov. Hráč si v hre dokáže vylepšovať svoje skilly a zbroj.
 
 <p align="center">
   <img src="https://github.com/l-benko/OT_Game_2024/blob/main/archero.jpg" alt="Archero">
