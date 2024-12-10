@@ -31,10 +31,10 @@ class Game:
         self.enemy_spawn_positions = [] # list to store possible spawn positions for enemies
 
         # load audio for the game
-        self.shoot_sound = pygame.mixer.Sound(join('assets', 'audio', 'shoot.wav'))
+        self.shoot_sound = pygame.mixer.Sound(join('assets', 'audio', 'Sword Slash (Rpg).wav'))
         self.shoot_sound.set_volume(0.4) # set volume for shoot sound
-        self.impact_sound = pygame.mixer.Sound(join('assets', 'audio', 'impact.ogg'))
-        self.music = pygame.mixer.Sound(join('assets', 'audio', 'music.wav'))
+        self.impact_sound = pygame.mixer.Sound(join('assets', 'audio', 'Monster death (Rpg).wav'))
+        self.music = pygame.mixer.Sound(join('assets', 'audio', 'Battle Variable Intensity 1 (loop).wav'))
         self.music.set_volume(0.3) # set background music volume
         self.music.play(loops=-1) # loop the music indefinitely
 
