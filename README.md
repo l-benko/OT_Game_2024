@@ -31,7 +31,7 @@ Survivor.io je mobilná hra zameraná na jedného hrdinu bojujúceho proti veľk
   <em>Obrázok 2 Ukážka hry Survivor.io</em>
 </p>
 
-### **1.2 Hráčsky zážitok**
+### **1.2 Herný zážitok**
 Cieľom hry je, aby hráč prežil ***určitý časový interval v hre***, pričom sa nenechá poraziť veľkým množstvom nepriateľov, ktorí sa na neho rútia a pri kontakte mu spôsobujú zranenia. Hráč sa môže pohybovať po mape a zároveň môže likvidovať nepriateľov, čím zvyšuje svoje šance úspešného prežitia časového intervalu.
 
 ### **1.3 Vývojový softvér**
